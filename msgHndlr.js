@@ -51,9 +51,9 @@ module.exports = msgHandler = async (client, message) => {
                 Yt3:'[❗] An error occurred, unable to convert to mp3!',
                 Yt4:'[❗] An error occurred, possibly an error caused by the system.',
                 Ig: '[❗] Something wrong, probably because the account is private',
-                Ki: '[❗] Bot cant eject group admin!'
+                Ki: '[❗] Bot cant eject group admin!',
                 Ad: '[❗] Unable to add target, possibly because it is private',
-                Iv: '[❗] The link you sent is invalid!'
+                Iv: '[❗] The link you sent is invalid!',
             }
         }
         const apiKey = 'API-KEY' // apikey you can get it at https://mhankbarbar.herokuapp.com/api
