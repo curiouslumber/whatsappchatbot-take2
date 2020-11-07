@@ -44,16 +44,16 @@ module.exports = msgHandler = async (client, message) => {
         }
 
         const mess = {
-            wait: '[ WAIT ] Sedang di proses⏳ silahkan tunggu sebentar',
+            wait: '[WAIT] Is in progress⏳ please wait a minute',
             error: {
-                St: '[❗] Kirim gambar dengan caption *!sticker* atau tag gambar yang sudah dikirim',
-                Qm: '[❗] Terjadi kesalahan, mungkin themenya tidak tersedia!',
-                Yt3: '[❗] Terjadi kesalahan, tidak dapat meng konversi ke mp3!',
-                Yt4: '[❗] Terjadi kesalahan, mungkin error di sebabkan oleh sistem.',
-                Ig: '[❗] Terjadi kesalahan, mungkin karena akunnya private',
-                Ki: '[❗] Bot tidak bisa mengeluarkan admin group!',
-                Ad: '[❗] Tidak dapat menambahkan target, mungkin karena di private',
-                Iv: '[❗] Link yang anda kirim tidak valid!'
+                St: '[❗] Send an image with the caption *!sticker* or the image tag that has been sent',
+                Qm: '[❗] An error occurred, maybe the theme is not available!',
+                Yt3:'[❗] An error occurred, unable to convert to mp3!',
+                Yt4:'[❗] An error occurred, possibly an error caused by the system.',
+                Ig: '[❗] Something wrong, probably because the account is private',
+                Ki: '[❗] Bot cant eject group admin!'
+                Ad: '[❗] Unable to add target, possibly because it is private',
+                Iv: '[❗] The link you sent is invalid!'
             }
         }
         const apiKey = 'API-KEY' // apikey you can get it at https://mhankbarbar.herokuapp.com/api
@@ -64,7 +64,7 @@ module.exports = msgHandler = async (client, message) => {
         const groupAdmins = isGroupMsg ? await client.getGroupAdmins(groupId) : ''
         const isGroupAdmins = isGroupMsg ? groupAdmins.includes(sender.id) : false
         const isBotGroupAdmins = isGroupMsg ? groupAdmins.includes(botNumber + '@c.us') : false
-        const ownerNumber = ["628xxx@c.us","+918828466218"] // replace with your whatsapp number
+        const ownerNumber = ["628xxx@c.us","+1(740)273-9223"] // replace with your whatsapp number
         const isOwner = ownerNumber.includes(sender.id)
         const isBlocked = blockNumber.includes(sender.id)
         const isNsfw = isGroupMsg ? nsfw_.includes(chat.id) : false
@@ -105,7 +105,7 @@ module.exports = msgHandler = async (client, message) => {
             if (isMedia) {
                 if (mimetype === 'video/mp4' && message.duration < 10 || mimetype === 'image/gif' && message.duration < 10) {
                     const mediaData = await decryptMedia(message, uaOverride)
-                    client.reply(from, '[WAIT] Sedang di proses⏳ silahkan tunggu ± 1 min!', id)
+                    client.reply(from, '[WAIT] In progress⏳ please wait ± 1 min!', id)
                     const filename = `./media/aswu.${mimetype.split('/')[1]}`
                     await fs.writeFileSync(filename, mediaData)
                     await exec(`gify ${filename} ./media/output.gif --fps=30 --scale=240:240`, async function (error, stdout, stderr) {
@@ -113,7 +113,7 @@ module.exports = msgHandler = async (client, message) => {
                         await client.sendImageAsSticker(from, `data:image/gif;base64,${gif.toString('base64')}`)
                     })
                 } else (
-                    client.reply(from, '[❗] Kirim video dengan caption *!stickerGif* max 10 sec!', id)
+                    client.reply(from, '[❗] Send a video with the caption *!stickerGif* max 10 sec!', id)
                 )
             }
             break
@@ -458,7 +458,7 @@ module.exports = msgHandler = async (client, message) => {
             const chatz = await client.getAllChatIds()
             for (let ids of chatz) {
                 var cvk = await client.getChatById(ids)
-                if (!cvk.isReadOnly) await client.sendText(ids, `[ Shinomiya Kaguya BOT Broadcast ]\n\n${msg}`)
+                if (!cvk.isReadOnly) await client.sendText(ids, `[ B.Sc.IT SXC ]\n\n${msg}`)
             }
             client.reply(from, 'Broadcast Success!', id)
             break
@@ -484,7 +484,7 @@ module.exports = msgHandler = async (client, message) => {
                 hehe += '╠➥'
                 hehe += ` @${groupMem[i].id.replace(/@c.us/g, '')}\n`
             }
-            hehe += '╚═〘 Shinomiya Kaguya BOT 〙'
+            hehe += '╚═〘 B.Sc.IT SXC 〙'
             await client.sendTextWithMentions(from, hehe)
             break
         case '!kickall':
